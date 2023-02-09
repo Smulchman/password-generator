@@ -13,7 +13,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// pseudocode
+// PSEUDOCODE
 // I want to make arrays with all characters
 // as the user decides what they want
 // combine the arrays into a temp local variable
@@ -39,39 +39,45 @@ function generatePassword(){
     tempTotal = parseInt(prompt("Choose a length for your password of at least 8 and no more than 128."));
     if (tempTotal<8){
       alert("That's too low!");
-      getTotal();
-      return;
+      return 0;
+      // return getTotal();
     }
     else if (tempTotal>128){
       alert("That's too high!");
-      getTotal();
-      return;
+      return 0;
+      // return getTotal();
     }
-    else {
-      totalChar = tempTotal;
-      return;
+    else{
+    return tempTotal;
     }
   }
 
-  getTotal();
+  totalChar = getTotal();
+  console.log(totalChar);
+
+  if(totalChar===0){
+  return "Try again";
+  }
+  else{
+    if(confirm("Would you like lowercase letters?")){
+     chosen = chosen.concat(lowercase);
+   }
+   if(confirm("Would you like uppercase letters?")){
+     chosen = chosen.concat(uppercase);
+   }
+   if(confirm("Would you like numbers?")){
+     chosen = chosen.concat(numbers);
+    }
+   if(confirm("Would you like special characters?")){
+      chosen = chosen.concat(special);
+   }
+
+    for (var i = 0; i <= totalChar; i++) { 
+     pw.push(chosen[Math.floor(Math.random() * chosen.length)])
+    }
   
-  if(confirm("Would you like lowercase letters?")){
-    chosen = chosen.concat(lowercase);
-  }
-  if(confirm("Would you like uppercase letters?")){
-    chosen = chosen.concat(uppercase);
-  }
-  if(confirm("Would you like numbers?")){
-    chosen = chosen.concat(numbers);
-  }
-  if(confirm("Would you like special characters?")){
-    chosen = chosen.concat(special);
-  }
+  console.log(pw.join(""));
 
-  for (var i = 0; i <= totalChar; i++) { 
-    pw.push(chosen[Math.floor(Math.random() * chosen.length)])
-}
-console.log(pw.join(""));
-
-return pw.join("");
+  return pw.join("");
+  }
 }
