@@ -37,18 +37,20 @@ function generatePassword(){
   function getTotal(){
     var tempTotal = 0;
     tempTotal = parseInt(prompt("Choose a length for your password of at least 8 and no more than 128."));
+    if (isNaN(tempTotal)){
+      alert("That's not a number!");
+      return 0;
+    }
     if (tempTotal<8){
       alert("That's too low!");
       return 0;
-      // return getTotal();
     }
     else if (tempTotal>128){
       alert("That's too high!");
       return 0;
-      // return getTotal();
     }
     else{
-    return tempTotal;
+      return tempTotal;
     }
   }
 
@@ -56,21 +58,24 @@ function generatePassword(){
   console.log(totalChar);
 
   if(totalChar===0){
-  return "Try again";
+  return "Improper length entered: try again.";
   }
   else{
     if(confirm("Would you like lowercase letters?")){
      chosen = chosen.concat(lowercase);
-   }
+    }
    if(confirm("Would you like uppercase letters?")){
      chosen = chosen.concat(uppercase);
-   }
+    }
    if(confirm("Would you like numbers?")){
      chosen = chosen.concat(numbers);
     }
    if(confirm("Would you like special characters?")){
       chosen = chosen.concat(special);
-   }
+    }
+   if(chosen.length === 0){
+    return "Please pick at least one type of character!"
+    }
 
     for (var i = 0; i <= totalChar; i++) { 
      pw.push(chosen[Math.floor(Math.random() * chosen.length)])
