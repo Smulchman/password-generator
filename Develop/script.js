@@ -36,7 +36,7 @@ function generatePassword(){
   var totalChar = 0;
   function getTotal(){
     var tempTotal = 0;
-    tempTotal = parseint(prompt("Choose a length for your password of at least 8 and no more than 128."));
+    tempTotal = parseInt(prompt("Choose a length for your password of at least 8 and no more than 128."));
     if (tempTotal<8){
       alert("That's too low!");
       getTotal();
@@ -68,11 +68,10 @@ function generatePassword(){
     chosen = chosen.concat(special);
   }
 
-  console.log(chosen);
-
   for (var i = 0; i <= totalChar; i++) { 
     pw.push(chosen[Math.floor(Math.random() * totalChar)])
 }
+console.log(pw.toString());
 
-return toString(pw);
+return pw.toString();
 }
