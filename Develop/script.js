@@ -30,3 +30,49 @@ var numbers = ['1','2','3','4','5','6','7','8','9','0'];
 
 var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", ".", "`", "~", "|", "<", ">", "=", "-", "_"];
 
+function generatePassword(){
+  var chosen = [];
+  var pw = [];
+  var totalChar = 0;
+  function getTotal(){
+    var tempTotal = 0;
+    tempTotal = parseint(prompt("Choose a length for your password of at least 8 and no more than 128."));
+    if (tempTotal<8){
+      alert("That's too low!");
+      getTotal();
+      return;
+    }
+    else if (tempTotal>128){
+      alert("That's too high!");
+      getTotal();
+      return;
+    }
+    else {
+      totalChar = tempTotal;
+      return;
+    }
+  }
+
+  getTotal();
+  
+  if(confirm("Would you like lowercase letters?")){
+    chosen = chosen.concat(lowercase);
+  }
+  if(confirm("Would you like uppercase letters?")){
+    chosen = chosen.concat(uppercase);
+  }
+  if(confirm("Would you like numbers?")){
+    chosen = chosen.concat(numbers);
+  }
+  if(confirm("Would you like special characters?")){
+    chosen = chosen.concat(special);
+  }
+
+  console.log(chosen);
+
+  for (var i = 0; i <= totalChar; i++) { 
+    pw.push(chosen[Math.floor(Math.random() * totalChar)])
+}
+
+return toString(pw);
+}
