@@ -69,9 +69,9 @@ function generatePassword(){
   }
 
   for (var i = 0; i <= totalChar; i++) { 
-    pw.push(chosen[Math.floor(Math.random() * totalChar)])
+    pw.push(chosen[Math.floor(Math.random() * chosen.length)])
 }
-console.log(pw.toString());
+console.log(pw.join(""));
 
-return pw.toString();
+return pw.join("");
 }
